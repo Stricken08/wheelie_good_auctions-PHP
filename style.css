@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 2%;
+  border-bottom: 0.3em solid #41a4c3;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #24292f;
+}
+.content {
+  position: absolute;
+  top: 25vh;
+  width: 100%;
+}
+.navbar a {
+  text-decoration: none;
+  color: #41a4c3;
+  font-size: x-large;
+}
+.navbar a:hover {
+  transition: 500ms;
+  border-bottom: solid 2px #41a4c3;
+}
+.mainLogo {
+  flex-grow: 2;
+}
+.mainLogo img {
+  width: 15vw;
+  border-radius: 10px;
+  margin-bottom: 1%;
+}
+.mainBanner {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("main_banner.png");
+  padding: 30%;
+  background-position: center;
+  background-size: cover;
+  max-width: 100%;
+  color: white;
+}
