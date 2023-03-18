@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-
-
-
-    <?php
+ <?php
 
     class Annonce
     {
@@ -83,20 +68,46 @@
             $query->execute();
             $result =  $query->fetchAll();
             foreach ($result as $item) {
-                echo "<div class='annonce'>";
+
+                if ($item['car_brand'] == 'Toyota') {
+                    echo "<img src='./brands/toyota.png'>";
+                } else if ($item['car_brand'] == 'Audi') {
+                    echo "<img src='./brands/audi.png'>";
+                } else if ($item['car_brand'] == 'BMW') {
+                    echo "<img src='BMW.png'>";
+                } else if ($item['car_brand'] == 'Citroën') {
+                    echo "<img src='./brands/citroen.jpg'>";
+                } else if ($item['car_brand'] == 'Fiat') {
+                    echo "<img src='./brands/fiat.jpg'>";
+                } else if ($item['car_brand'] == 'Ford') {
+                    echo "<img src='./brands/Ford.png'>";
+                } else if ($item['car_brand'] == 'Hyundai') {
+                    echo "<img src='./brands/hyundai.png'>";
+                } else if ($item['car_brand'] == 'Mercedes') {
+                    echo "<img src='./brands/Mercedes.png'>";
+                } else if ($item['car_brand'] == 'Peugeot') {
+                    echo "<img src='./brands/peugeot.png'>";
+                } else if ($item['car_brand'] == 'Renault') {
+                    echo "<img src='./brands/renault.png'>";
+                } else if ($item['car_brand'] == 'Seat') {
+                    echo "<img src='./brands/SEAT.png'>";
+                } else if ($item['car_brand'] == 'Tesla') {
+                    echo "<img src='./brands/Tesla.png'>";
+                } else if ($item['car_brand'] == 'Volkswagen') {
+                    echo "<img src='./brands/Volkswagen.jpg'>";
+                } else {
+                    echo "<img src='./brands/Volkswagen.jpg'>";
+                }
+
                 echo "<p><b>Marque de la voiture: </b>" . $item['car_brand'] . "</p>";
                 echo "<p><b>Modèle de la voiture: </b>"  . $item['car_model'] . "</p>";
                 echo "<p><b>Prix de départ: </b> " . $item['start_price'] . "€</p>";
                 echo "<p><b>Fin de l'enchère:</b>"  . $item['end_date'] . "</p>";
                 echo "<button><a href='annonceDetails.php?id=" . $item['id'] . "'>Consulter l'annonce</a></button>";
                 echo "<br>";
-                echo "</div>";
+                echo "<br>";
+                echo "<br>";
             }
         }
     }
     ?>
-
-
-</body>
-
-</html>
