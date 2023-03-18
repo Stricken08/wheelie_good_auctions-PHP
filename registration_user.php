@@ -8,9 +8,7 @@
 
 <?php
 require_once __DIR__ . "/navbar.php";
-
 ?>
-
 <div class="content">
     <h2>Créer un Compte</h2>
     <form method="POST" action="User.class.php">

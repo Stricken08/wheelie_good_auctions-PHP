@@ -25,7 +25,7 @@ class Users
     }
     public function renderUser()
     {
-        echo "<h2>Votre Compte a bien été crée</h2>";
+        echo "<h2>Votre compte a bien été créé</h2>";
         echo "<h3>Nom: " . $_POST["lastname"] . "</h3>";
         echo "<h3>Prenom: " . $_POST["firstname"] . "</h3>";
         echo "<h3>email: " . $_POST["email"] . "</h3>";

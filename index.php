@@ -19,9 +19,8 @@
         <h3><i>Retrouvez toutes les enchères en cours</i> </h3>
         <?php
         $annonce = new Annonce();
-
+        $annonce->posterAnnonce();
         $annonce->showAllAnnonces();
-
         ?>
 
     </div>

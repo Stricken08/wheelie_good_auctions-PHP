@@ -12,9 +12,10 @@ require_once __DIR__ . "/Annonce.class.php";
 ?>
 <h1>Déposez votre annonce ici</h1>
 <div class="content">
-    <form action="addAnnonce.php" method="POST">
+    <form action="index.php" method="POST">
         <label for="prixReserve">Prix de départ:</label>
         <br>
+        <input type="hidden">
         <input type="text" name="prixReserve" id="prixReserve" required>
         <br>
         <label for="endDate">Date de fin de l'enchère:</label>

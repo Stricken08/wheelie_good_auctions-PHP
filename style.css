@@ -15,7 +15,7 @@ body {
 }
 .content {
   position: absolute;
-  top: 25vh;
+  top: 40vh;
   width: 100%;
 }
 .navbar a {
@@ -44,3 +44,9 @@ body {
   max-width: 100%;
   color: white;
 }
+
+/* style des annonces en vracs */
+.annonce {    display: flex;
+  
+  justify-content: center;
+  flex-direction: column;}
