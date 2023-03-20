@@ -1,5 +1,16 @@
- <?php
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <?php
     class Annonce
     {
         public function posterAnnonce()
@@ -33,16 +44,19 @@
             echo "<p><b>Puissance: </b>"  . $result['power'] . "ch</p>";
             echo "<p><b>Date de mise en circulation: </b>"  . $result['production_year'] . "</p>";
             echo "<p><b>Description du véhicule: </b>"  . $result['description'] . "</p>";
-            //   vincent
-            // echo "<button><a href='newBid.php'>Enchérir</a></button>";
-            // echo $result['new_price'];
+
     ?>
             <?php
             echo "<form method='POST'>";
             echo "<p>Enchérir <input type='text' name='new_price' value='" . $result['start_price'] . "'></p>";
-            echo "<button type='submit'>Valider</button>";
-            echo "<p>Prix de l'enchère: " . $result['new_price'] . "</p>";
-            echo "</form>";
+            if (isset($_SESSION["email"]) && isset($_SESSION["password"]) && $_SESSION["email"] && $_SESSION["password"]) {
+                echo "<button type='submit'>Valider</button>";
+                echo "<p>Prix de l'enchère: " . $result['new_price'] . "</p>";
+                echo "</form>";
+            } else {
+
+                echo "<button><a href='connection.php'>Se connecter pour encherir</a></button>";
+            }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $new_price = $_POST["new_price"];
                 $dbh = new PDO("mysql:dbname=mini_projet_enchere;host=127.0.0.1;port=8889", "root", "root");
@@ -53,7 +67,6 @@
                 $result['new_price'] = $new_price;
                 header("Location: http://localhost:8888/enchere/annonceDetails.php?id=" . $result['id']);
             } ?>
-
 
     <?php
 
@@ -68,6 +81,9 @@
             $query->execute();
             $result =  $query->fetchAll();
             foreach ($result as $item) {
+
+                echo "<div class=\"annonces\">";
+                echo "<div class=\"annoncesImage\">";
 
                 if ($item['car_brand'] == 'Toyota') {
                     echo "<img src='./brands/toyota.png'>";
@@ -98,16 +114,28 @@
                 } else {
                     echo "<img src='./brands/Volkswagen.jpg'>";
                 }
+                echo "</div>";
 
+                echo "<div class=\"annonceContent\" >";
                 echo "<p><b>Marque de la voiture: </b>" . $item['car_brand'] . "</p>";
                 echo "<p><b>Modèle de la voiture: </b>"  . $item['car_model'] . "</p>";
                 echo "<p><b>Prix de départ: </b> " . $item['start_price'] . "€</p>";
+                if ($item['new_price'] != 0) {
+                    echo "<p><b>Prix encheri: </b> " . $item['new_price'] . "€</p>";
+                }
+
                 echo "<p><b>Fin de l'enchère:</b>"  . $item['end_date'] . "</p>";
                 echo "<button><a href='annonceDetails.php?id=" . $item['id'] . "'>Consulter l'annonce</a></button>";
                 echo "<br>";
                 echo "<br>";
                 echo "<br>";
+                echo "</div>";
+                echo "</div>";
             }
         }
     }
     ?>
+
+</body>
+
+</html>

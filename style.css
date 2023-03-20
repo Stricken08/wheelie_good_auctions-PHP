@@ -12,12 +12,11 @@ body {
   top: 0;
   width: 100%;
   background-color: #24292f;
+  z-index: 1;
 }
-.content {
-  position: absolute;
-  top: 40vh;
-  width: 100%;
-}
+
+
+
 .navbar a {
   text-decoration: none;
   color: #41a4c3;
@@ -27,6 +26,7 @@ body {
   transition: 500ms;
   border-bottom: solid 2px #41a4c3;
 }
+/*logo navbar*/
 .mainLogo {
   flex-grow: 2;
 }
@@ -35,6 +35,7 @@ body {
   border-radius: 10px;
   margin-bottom: 1%;
 }
+/*page d'accueil*/
 .mainBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("main_banner.png");
@@ -44,7 +45,12 @@ body {
   max-width: 100%;
   color: white;
 }
-
+/* style formulaire connection */
+.login {
+  position: relative; 
+  top: 25vh;
+  
+}
 /* style formulaire inscription */
 .register {
   max-width: 500px;
@@ -53,16 +59,18 @@ body {
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  top: 25vh;
 }
 
- h2 {
+.register h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
   color: #1877f2;
 }
 
-input {
+.register input {
   display: block;
   width: 100%;
   padding: 10px 15px;
@@ -73,7 +81,7 @@ input {
   font-size: 16px;
 }
 
-button[type="submit"] {
+.register button[type="submit"] {
   display: block;
   width: 100%;
   padding: 10px 15px;
@@ -85,21 +93,58 @@ button[type="submit"] {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  z-index: 2;
+  
 }
 
-button[type="submit"]:hover {
+.register button[type="submit"]:hover {
   background-color: #0e6dd5;
 }
 
-label {
+.register label {
   display: block;
   margin-bottom: 5px;
   font-size: 16px;
   font-weight: bold;
   color: #333;
 }
+/* style global des annonces */
+.annonces {  
+  display: flex;
+  margin-bottom: 5%;
+  border: 2px solid rgba(128, 128, 128, 0.414);
+  border-radius: 10px;
+  width: 80%;
+  height: 80%;
+  margin: 3% 10%;
+}
+.annonces a {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+.annonceContent {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  align-items: center;
+}
+.annoncesImage{
+  margin: auto;
+  display: block;
+  margin-left: 5%;
+}
+.annonces button {
+  align-self: center;
+  background: #0e6dd5;
+  color: white;
+  padding: 1% 2%;
+  border-style: none;
+  font-size: large;
+  border-radius: 5px;
+}
 
 
 
 
-
+/* .content {position: fixed;top: 30vh;} */

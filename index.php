@@ -20,11 +20,11 @@
         <?php
         $annonce = new Annonce();
         $annonce->posterAnnonce();
-        ?><div class="annonce">
-            <?php
-            $annonce->showAllAnnonces();
-            ?>
-        </div>
+        ?>
+        <?php
+        $annonce->showAllAnnonces();
+        ?>
+
 
     </div>
 

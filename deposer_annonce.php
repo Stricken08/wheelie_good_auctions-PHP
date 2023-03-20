@@ -10,8 +10,9 @@
 require_once __DIR__ . "/navbar.php";
 require_once __DIR__ . "/Annonce.class.php";
 ?>
-<h1>Déposez votre annonce ici</h1>
-<div class="content">
+<div class="register">
+    <h1>Déposez votre annonce ici</h1>
+
     <form action="index.php" method="POST">
         <label for="prixReserve">Prix de départ:</label>
         <br>
