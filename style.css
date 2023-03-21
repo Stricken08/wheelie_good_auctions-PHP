@@ -1,5 +1,6 @@
 body {
   margin: 0;
+ 
 }
 .navbar {
   display: flex;
@@ -11,12 +12,10 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #24292f;
+  background-color: #24292fd6;
   z-index: 1;
+  height: 14%;
 }
-
-
-
 .navbar a {
   text-decoration: none;
   color: #41a4c3;
@@ -39,17 +38,18 @@ body {
 .mainBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("main_banner.png");
-  padding: 30%;
+  padding: 15%;
   background-position: center;
   background-size: cover;
   max-width: 100%;
   color: white;
+  text-align: center;
+  margin-top: 0;
 }
 /* style formulaire connection */
 .login {
   position: relative; 
   top: 25vh;
-  
 }
 /* style formulaire inscription */
 .register {
@@ -142,9 +142,32 @@ body {
   border-style: none;
   font-size: large;
   border-radius: 5px;
+  margin-bottom: 1%;
 }
 
+/* style du formulaire pour encherir */
 
+ .deadline  {
+  font-style: italic;
+  align-self: flex-end;
+  color: red;
+  margin-right: 1%;
 
+}
 
-/* .content {position: fixed;top: 30vh;} */
+/* font d'ecran poster annonce */
+.pictureCover {background-image: url(./brands/continuous-line-car-minimalist-style-black-linear-sketch_274619-3098.avif);
+;background-size: 100%;}
+
+/* style du filter  */
+.filter button {
+  align-self: center;
+  background: #0e6dd5;
+  color: white;
+  padding: 0.5% 1%;
+  border-style: none;
+  font-size: large;
+  border-radius: 5px;
+  margin-bottom: 1%;
+}
+ 

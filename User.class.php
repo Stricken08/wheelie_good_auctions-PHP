@@ -12,26 +12,38 @@ class Users
         $this->email = $email;
         $this->password = $password;
     }
-
     public function addUser()
     {
-        $dbh = new PDO("mysql:dbname=mini_projet_enchere;host=127.0.0.1;port=8889", "root", "root");
-        $query = $dbh->prepare("INSERT INTO `users`( `lastname`, `firstname`, `email`, `mdp`) VALUES (:lastname,:firstname,:email,:mdp)");
-        $query->bindValue(':lastname', $_POST["lastname"], PDO::PARAM_STR);
-        $query->bindValue(':firstname', $_POST["firstname"], PDO::PARAM_STR);
-        $query->bindValue(':email', $_POST["email"], PDO::PARAM_STR);
-        $query->bindValue(':mdp', $_POST["password"], PDO::PARAM_STR);
-        $query->execute();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $dbh = new PDO("mysql:dbname=mini_projet_enchere;host=127.0.0.1;port=8889", "root", "root");
+            $query = $dbh->prepare("INSERT INTO `users`( `lastname`, `firstname`, `email`, `password`) VALUES (:lastname,:firstname,:email, :password)");
+            $query->bindValue(':lastname', $_POST["lastname"], PDO::PARAM_STR);
+            $query->bindValue(':firstname', $_POST["firstname"], PDO::PARAM_STR);
+            $query->bindValue(':email', $_POST["email"], PDO::PARAM_STR);
+            $query->bindValue(':password', $_POST["password"], PDO::PARAM_STR);
+            $query->execute();
+        }
     }
     public function renderUser()
     {
-        echo "<h2>Votre compte a bien été créé</h2>";
-        echo "<h3>Nom: " . $_POST["lastname"] . "</h3>";
-        echo "<h3>Prenom: " . $_POST["firstname"] . "</h3>";
-        echo "<h3>email: " . $_POST["email"] . "</h3>";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            echo "<h2> Votre compte a bien été créé </h2>";
+            echo "<p>Nom de famille: " . $_POST["lastname"] . "</p>";
+            echo "<p>Prénom: " . $_POST["firstname"] . "</p>";
+            echo "<p>Email: " . $_POST["email"] . "</p>";
+            header('Refresh: 3; URL=http://localhost:8888/enchere/connection.php');
+        }
+    }
+    public static function updateProfile($id)
+    {
+        $dbh = new PDO("mysql:dbname=mini_projet_enchere;host=127.0.0.1;port=8889", "root", "root");
+        $query = $dbh->prepare("SELECT * from `users` WHERE id=:id");
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetch();;
+        // echo "<h2>Mes informations personnelles</h2>";
+        // echo "<p>Nom de famille: " . $result["lastname"] . "</p>";
+        // echo "<p>Prénom: " . $result["firstname"] . "</p>";
+        // echo "<p>Email: " . $result["email"] . "</p>";
     }
 }
-
-$user = new Users($_POST["lastname"], $_POST["firstname"], $_POST["email"], $_POST["password"]);
-$user->addUser();
-$user->renderUser();
